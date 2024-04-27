@@ -1,0 +1,14 @@
+{
+  "name": "sairen-back",
+  "version": "1.0.0",
+  "description": "back end in NodeJs and Fastify",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bintein Lauranne",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^4.26.2"
+  }
+}
