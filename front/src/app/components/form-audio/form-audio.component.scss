@@ -14,14 +14,16 @@
             background-color: #d4ebe9;
             border: 2px solid #b1d9d5;
         }
+
         display: flex;
-        min-height: 100px;
+        min-height: 200px;
         align-items: center;
+        flex-direction: column;
         justify-content: center;
         border: 1px solid #b1d9d5;
         background-color: #f2f7f6;
         border-radius: 10px;
-        gap: 5px;
+        gap: 15px;
         
         mat-icon {
             width: 60px;
@@ -32,6 +34,7 @@
     }
 
     .file-list{
+        max-height: 200px;
         min-height: 50px;
         border: 1px solid #b1d9d5;
         display: flex;
@@ -79,4 +82,13 @@
             }
         }
     }
+}
+
+.greenBtn{
+    padding: 10px;
+    border-radius: 10px;
+    background: #187d71;
+    color: white;
+    border: none;
+    margin-left: 5px;
 }

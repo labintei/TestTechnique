@@ -92,27 +92,32 @@ export class FormAudioComponent {
     }
   }
 
-  UploadTrack(fileId : any) {
+  async UploadTrack(fileId : any) {
     console.log('fileId:', fileId);
     console.log('files:', this.files);
     this.progress$ = this.DataService.trackProgress(fileId);
     this.progress$.subscribe(progress => {
-      // Update progress bar value as upload progresses
       this.value = Math.round(progress);
+      if(this.value == 0) {
+        this.value = 1;
+      }
+      if(this.value == 100) {
+        this.value = 0;
+      }
       console.log('Progress:', progress);
       this.changeDetectorRef.detectChanges();
     });
     // Initiate file upload
-    this.DataService.uploadFiles(this.files, fileId).subscribe(
-      (response: any) => {
+    this.DataService.uploadFiles(this.files, fileId).subscribe({
+      next: (response: any) => {
         console.log('Upload complete:', response);
-        // Optionally, perform any actions after upload completion
+        // // Optionally, perform any actions after upload completion
         this.clearFiles();
       },
-      (error: any) => {
+      error: (error: any) => {
         console.error('Error uploading file:', error);
       }
-    );
+    });
   }
 
   sendFiles() {
@@ -128,7 +133,6 @@ export class FormAudioComponent {
         }
       );
     };
-    // this.clearFiles();
   }
 
   onDragOver(event: DragEvent) {

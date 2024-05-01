@@ -10,7 +10,7 @@
       <mat-icon class="icon">cloud_upload</mat-icon>
       <p class="text">Drag & Drop files here</p>
       <input type="file" #fileInput (change)="onFileBrowse($event)" multiple style="display: none;">
-      <button mat-raised-button color="primary" (click)="fileInput.click()">Browse</button>
+      <button mat-raised-button color="primary" class="greenBtn" (click)="fileInput.click()">Browse</button>
   </div>
 
   <div class="file-list">
@@ -23,7 +23,7 @@
         <span class="file-name">{{ file.name }}</span>
         <span>  </span>
         <span class="file-size">{{ getFileSize(file.size) }}</span>
-        <button mat-icon-button color="warn" (click)="removeFile(i)">
+        <button class="greenBtn" mat-icon-button color="warn" (click)="removeFile(i)">
           <mat-icon>delete</mat-icon>
         </button>
       </div>
