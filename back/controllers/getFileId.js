@@ -1,4 +1,4 @@
-function getFileId(req, res) {
+function getFileId (req, res) {
     const uploadProgress = req.uploadProgress;
     console.log('uploadProgress:', uploadProgress);
     const fileId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
@@ -6,4 +6,6 @@ function getFileId(req, res) {
     res.json({ fileId });
 }
 
-module.exports = getFileId;
+module.exports = {
+    getFileId
+};

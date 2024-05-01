@@ -24,10 +24,13 @@ function progressStatus (req, res) {
             res.write(`data: ${JSON.stringify({ progress: 0 })}\n\n`);
         }
     }, 1000);
+
     req.on('close', () => {
         clearInterval(intervalId);
         res.end();
     });
 }
 
-module.exports = progressStatus;
+module.exports = {
+    progressStatus
+};

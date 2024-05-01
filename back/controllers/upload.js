@@ -21,7 +21,7 @@ multer.diskStorage = function (options) {
 const upload = multer({ storage: storage }).single('file');
 
 // Upload the file and track the progress
-function uploadFile (req, res) {
+function uploadFile(req, res) {
     const uploadProgress = req.uploadProgress;
     // Initialize progress tracking
     let fileId = req.query.fileId; // Assuming the client sends the file ID as a query parameter
@@ -38,6 +38,7 @@ function uploadFile (req, res) {
     
     upload(req, res, function(err) {
         if (err) {
+            console.log(err);
             return res.end("Error uploading file.");
         }
         uploadProgress[fileId].finished = true;
@@ -49,4 +50,6 @@ function uploadFile (req, res) {
     });
 }
 
-module.exports = uploadFile;
+module.exports = {
+    uploadFile
+};
