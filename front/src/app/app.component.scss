@@ -1,0 +1,15 @@
+$colors: (
+    primary: #041a1a,
+    secondary: #093b3c
+);
+
+* , ul, li, h1, h2, h3, h4, h5, h6, p, a{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: fixed;
+    background: linear-gradient(to bottom, map-get($colors, primary), map-get($colors, secondary));
+    color: white;
+}

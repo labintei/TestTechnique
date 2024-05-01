@@ -1,0 +1,44 @@
+<div class ='card-load'>
+
+  <h1>Audio drop file form</h1>
+
+  <div class="file-drop"
+      (drop)="onFileDropped($event)"
+      (dragover)="onDragOver($event)"
+      (dragenter)="onDragEnter($event)"
+      (dragleave)="onDragLeave($event)">
+      <mat-icon class="icon">cloud_upload</mat-icon>
+      <p class="text">Drag & Drop files here</p>
+      <input type="file" #fileInput (change)="onFileBrowse($event)" multiple style="display: none;">
+      <button mat-raised-button color="primary" (click)="fileInput.click()">Browse</button>
+  </div>
+
+  <div class="file-list">
+    <mat-progress-spinner *ngIf="value != 0"
+      [color]="color"
+      [mode]="mode"
+      [value]="value">
+    </mat-progress-spinner>
+      <div *ngFor="let file of files; let i = index" class="file-item">
+        <span class="file-name">{{ file.name }}</span>
+        <span>  </span>
+        <span class="file-size">{{ getFileSize(file.size) }}</span>
+        <button mat-icon-button color="warn" (click)="removeFile(i)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+  </div>
+
+  <div class='button-container'>
+    <button mat-raised-button color="warn" (click)="clearFiles()">Clear</button>
+    <button mat-raised-button color="warn" (click)="sendFiles()">Send</button>
+  </div>
+
+
+  <!-- <mat-progress-spinner
+          [color]="color"
+          [mode]="mode"
+          [value]="value">
+  </mat-progress-spinner> -->
+
+</div>

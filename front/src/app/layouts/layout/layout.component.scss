@@ -1,0 +1,20 @@
+.layout {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+// .app-header {
+//     /* Your header styles here */
+// }
+
+.main-content {
+    flex: 1;
+    /* Your main content styles here */
+}
+
+// .app-footer {
+//     /* Your footer styles here */
+// }

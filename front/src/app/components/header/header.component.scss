@@ -1,0 +1,55 @@
+
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo-title {   
+        display: flex;
+        h1 {
+            margin: auto 0;
+            text-align: center;
+            font-size: 2.8rem;
+            margin-left: 10px;
+        }
+        .logo {
+            width: 150px;
+            height: 150px;
+        }
+    }
+    nav
+    {
+        background-color: white;
+        color: #093b3c;
+        border-radius: 10px;
+        width: 50%;
+        margin-right: 100px;
+        ul {
+            margin: 10px 50px 10px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            list-style: none;
+            li:first-child {
+                text-decoration: none;
+                margin-left: 0;
+            }
+            li {
+
+
+                a{
+                    font-size: 1.4rem;
+                    font-weight: 500;
+                    text-decoration: none;
+                    color: #093b3c;
+                    &:hover {
+                        color: black;
+                    }
+                }
+                margin-left: 10px;
+            }
+        }
+    }
+}
