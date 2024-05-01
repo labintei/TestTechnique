@@ -1,4 +1,5 @@
 function progressStatus (req, res) {
+
     const uploadProgress = req.uploadProgress;
     const fileId = req.query.fileId; // Assuming the client sends the file ID as a query parameter
     console.log('fileId:', fileId);
@@ -23,7 +24,7 @@ function progressStatus (req, res) {
         } else {
             res.write(`data: ${JSON.stringify({ progress: 0 })}\n\n`);
         }
-    }, 1000);
+    }, 100);
 
     req.on('close', () => {
         clearInterval(intervalId);
