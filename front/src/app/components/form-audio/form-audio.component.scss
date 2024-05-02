@@ -1,20 +1,20 @@
 .card-load {
-    display : grid;
+    display: grid;
     gap: 15px;
-    margin: 2% 10% ;
+    margin: 2% 10%;
     padding: 10px;
     border-radius: 20px;
     box-shadow: black 0px 0px 20px;
     width: 30%;
     background-color: white;
     color: #093b3c;
+
     .file-drop {
         box-sizing: border-box;
         &:hover {
             background-color: #d4ebe9;
             border: 2px solid #b1d9d5;
         }
-
         display: flex;
         min-height: 200px;
         align-items: center;
@@ -24,7 +24,6 @@
         background-color: #f2f7f6;
         border-radius: 10px;
         gap: 15px;
-        
         mat-icon {
             width: 60px;
             height: 60px;
@@ -33,42 +32,42 @@
         }
     }
 
-    .file-list{
+    .file-list {
         max-height: 200px;
-        min-height: 50px;
+        min-height: 100px;
         border: 1px solid #b1d9d5;
         display: flex;
         flex-direction: column;
         padding: 10px;
         overflow: scroll;
         gap: 5px;
+        
         mat-progress-spinner {
-            stroke :#0f5051 !important;
+            height: 30px;
+            width: 30px;
+            stroke: #0f5051 !important;
             margin: 0 auto;
-        };
-        .file-item{
+        }
+        .file-item {
             border: 1px solid #daefed;
             display: flex;
-
             justify-content: center;
             width: 100%;
             height: 50px;
-            background-color:  #f7fbfa;
+            background-color: #f7fbfa;
             align-items: center;
             justify-content: space-between;
         }
     }
 
-    .button-container{
-
-        // padding: 15px;
+    .button-container {
         width: 80%;
         gap: 20px;
         display: flex;
         margin: 0 auto;
         justify-content: space-between;
         margin-top: 10px;
-        button{
+        button {
             background-color: #0f5051;
             color: white;
             border: none;
@@ -77,7 +76,7 @@
             font-size: 1.8rem;
             font-weight: 300;
             cursor: pointer;
-            &:hover{
+            &:hover {
                 background-color: #197d71;
             }
         }
@@ -91,4 +90,30 @@
     color: white;
     border: none;
     margin-left: 5px;
+    &:hover{
+        background: #0f5051;
+    }
+}
+
+.msg-error,
+.msg-success {
+    text-align: center;
+    margin: 0 auto;
+    padding: 15px;
+    justify-self: center;
+    align-self: center;
+    font-size: 1.4rem;
+}
+
+.msg-error {
+    color: rgb(170, 48, 48);
+}
+
+.msg-success {
+    text-align: center;
+    color: rgb(24, 206, 112);
+}
+
+.mat-mdc-progress-spinner {
+    --mdc-circular-progress-active-indicator-color: rgb(24, 206, 112);
 }

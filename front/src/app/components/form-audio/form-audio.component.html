@@ -1,7 +1,5 @@
 <div class ='card-load'>
 
-  <h1>Audio drop file form</h1>
-
   <div class="file-drop"
       (drop)="onFileDropped($event)"
       (dragover)="onDragOver($event)"
@@ -19,14 +17,17 @@
       [mode]="mode"
       [value]="value">
     </mat-progress-spinner>
-      <div *ngFor="let file of files; let i = index" class="file-item">
-        <span class="file-name">{{ file.name }}</span>
-        <span>  </span>
-        <span class="file-size">{{ getFileSize(file.size) }}</span>
-        <button class="greenBtn" mat-icon-button color="warn" (click)="removeFile(i)">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </div>
+    <div [class.msg-success]="success === true" [class.msg-error]="success !== true" *ngIf="msg !== ''">
+      {{ msg }}
+    </div>
+    <div *ngFor="let file of files; let i = index" class="file-item">
+      <span class="file-name">{{ file.name }}</span>
+      <span>  </span>
+      <span class="file-size">{{ getFileSize(file.size) }}</span>        
+      <button class="greenBtn" mat-icon-button color="warn" (click)="removeFile(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
   </div>
 
   <div class='button-container'>

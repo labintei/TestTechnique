@@ -1,23 +1,26 @@
 
-.footer{
+.footer {
     nav {
-        ul{
-            margin: 10px 50px 10px 50px;
+        ul {
+            margin: 10px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            li{
-                margin: 0 10px 0 10px;
+            
+            li {
+                margin: 0 10px;
                 list-style: none;
                 color: white;
-                a{
+                
+                a {
                     color: white;
                     text-decoration: none;
                 }
             }
         }
     }
-    p{
+    
+    p {
         margin: auto 0;
         text-align: center;
     }

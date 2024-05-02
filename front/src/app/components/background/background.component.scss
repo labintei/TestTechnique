@@ -1,0 +1,27 @@
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    .container {
+        position: fixed;
+        justify-content: center;
+        align-content: center;
+        left: 55%;
+        top: 20%;
+        width: 40%;
+        height: 30%;
+    }
+
+    .text {
+        height: 20%;
+        text-align: center;
+        white-space: pre-wrap;
+        font-size: 3rem;
+        font-weight: 300;
+        line-height: 110%;
+    }
+}

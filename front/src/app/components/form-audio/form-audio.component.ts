@@ -8,16 +8,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { ProgressSpinnerMode, MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
-import { MatRadioModule } from '@angular/material/radio';
 import { MatSliderModule } from '@angular/material/slider';
 import { ThemePalette } from '@angular/material/core';
 import { ChangeDetectorRef } from '@angular/core';
-
 import { DataService } from '../../services/data.service';
 import { Observable } from 'rxjs';
-
-// i need to imform myself on this
-// import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-form-audio',
@@ -46,6 +41,8 @@ export class FormAudioComponent {
   color:ThemePalette = 'primary';
   mode:ProgressSpinnerMode = 'determinate';
   value:number = 0;
+  msg:string = '';
+  success:boolean = true;
 
   progress$: Observable<number> | undefined;
 
@@ -62,7 +59,6 @@ export class FormAudioComponent {
     if (files) {
       this.addFiles(files);
     }
-    console.log(files)
   }
 
   onFileBrowse(event: Event) {
@@ -73,6 +69,7 @@ export class FormAudioComponent {
   }
 
   addFiles(files: FileList) {
+    this.msg = '';
     for (let i = 0; i < files.length; i++) {
       const file = files.item(i) as File; // Add type assertion
       this.files.push(file);
@@ -84,6 +81,7 @@ export class FormAudioComponent {
   }
 
   clearFiles() {
+    this.msg = '';
     this.value = 0;
     this.changeDetectorRef.detectChanges();
     this.files = [];
@@ -93,43 +91,45 @@ export class FormAudioComponent {
   }
 
   async UploadTrack(fileId : any) {
-    console.log('fileId:', fileId);
-    console.log('files:', this.files);
+    const tmpFiles = this.files;
+    this.clearFiles();
+    this.changeDetectorRef.detectChanges();
     this.progress$ = this.DataService.trackProgress(fileId);
     this.progress$.subscribe(progress => {
       this.value = Math.round(progress);
-      if(this.value == 0) {
-        this.value = 1;
-      }
       if(this.value == 100) {
         this.value = 0;
       }
-      console.log('Progress:', progress);
       this.changeDetectorRef.detectChanges();
     });
-    // Initiate file upload
-    this.DataService.uploadFiles(this.files, fileId).subscribe({
+
+    this.DataService.uploadFiles(tmpFiles, fileId).subscribe({
       next: (response: any) => {
         console.log('Upload complete:', response);
-        // // Optionally, perform any actions after upload completion
-        this.clearFiles();
+        this.success = true;
+        this.msg = 'Upload complete';
+        this.changeDetectorRef.detectChanges();
       },
       error: (error: any) => {
         console.error('Error uploading file:', error);
+        this.msg = 'Error uploading file';
+        this.success = false;
+        this.changeDetectorRef.detectChanges();
       }
     });
   }
 
   sendFiles() {
-    console.log('files:', this.files);
     if(this.files.length != 0 && this.value == 0) {
       this.DataService.getFileId().subscribe(
         (fileId: any) => {
-          console.log('fileId:', fileId);
           this.UploadTrack(fileId);
         },
         (error: any) => {
           console.error('Error getting fileId:', error);
+          this.msg = 'Error uploading file';
+          this.success = false;
+          this.changeDetectorRef.detectChanges();
         }
       );
     };
