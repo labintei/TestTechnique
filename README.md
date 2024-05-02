@@ -1,7 +1,7 @@
 # Bonjour,
 
 ## Bienvenue dans mon rendu de test technique.
-Pour faire les installations taper cette commandes :
+Pour faire les installations taper cette commande :
 
 - ./start.sh
 
