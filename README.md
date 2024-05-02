@@ -1,17 +1,18 @@
-##Bonjour,
+# Bonjour,
 
-Bienvenue dans mon rendu de test technique.
+## Bienvenue dans mon rendu de test technique.
 Pour faire les installations taper cette commandes :
-./start.sh
+
+### ./start.sh
 
 Ensuite pour demarrer le back :
 
-cd back
-node index.js
+### cd back
+### npm start
 
 Ensuite pour demarrer le front :
 
-cd ../front
-ng serve --open
+### cd ../front
+### npm start
 
 Hésiter pas si vous avez des questions complémentaires
